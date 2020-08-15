@@ -1,5 +1,6 @@
 version: '3'
 services:
+
   elasticsearch:
     image: "elasticsearch:5"
     restart: always
@@ -9,3 +10,18 @@ services:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+
+  redis-1:
+    image: redis:3.2
+    ports:
+      - "6379:6379"
+
+  redis-2:
+    image: redis:3.2
+    ports:
+      - "6380:6379"
+
+  redis-3:
+    image: redis:3.2
+    ports:
+      - "6381:6379"

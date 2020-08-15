@@ -3,11 +3,12 @@ from aiohttp import web
 from aiohttp_swagger import setup_swagger
 from simple_settings import settings
 
-from .healthcheck.routes import register_routes as register_heathcheck_routes
 from .contrib.middlewares import (
     exception_handler_middleware,
     version_middleware
 )
+from .healthcheck.routes import register_routes as register_heathcheck_routes
+from .search.routes import register_routes as register_search_routes
 
 
 def build_app(loop=None):
@@ -29,6 +30,7 @@ def build_app(loop=None):
 
 def register_routes(app):
     register_heathcheck_routes(app)
+    register_search_routes(app)
 
 
 def get_middlewares():
