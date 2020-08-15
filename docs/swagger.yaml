@@ -38,3 +38,32 @@ paths:
           description: success
         "500":
           description: error
+  /search/:
+    post:
+      tags:
+        - search
+      summary: Search movies
+      description: Search movies based on filters
+      parameters:
+          - in: body
+            name: body
+            required: true
+            schema:
+              $ref: "#/definitions/SearchMovie"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad request
+        "500":
+          description: error
+definitions:
+  SearchMovie:
+    type: object
+    example: {
+      'teste': 'OK'
+    }
